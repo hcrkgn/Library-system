@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 from pymongo import MongoClient
 import bcrypt
@@ -58,7 +58,15 @@ def validate_book(data):
 
 @app.route("/")
 def home():
-    return "hello world"
+    return render_template("login.html")
+
+@app.route("/index")
+def index():
+    return render_template("index.html")
+
+@app.route("/register")
+def register_page():
+    return render_template("register.html")
 
 #Get all books
 @app.route("/api/books")

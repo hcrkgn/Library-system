@@ -1,6 +1,6 @@
-const form = document.getElementById("loginForm");
+const form = document.getElementById("registerForm");
 const message = document.getElementById("message");
-const API_URL = "http://127.0.0.1:5000/api/login";
+const API_URL = "/api/register";
 
 form.addEventListener("submit", async function(event){
 
@@ -31,19 +31,19 @@ form.addEventListener("submit", async function(event){
 
     const result = await response.json();
 
-    if(response.ok){
+   message.style.display = "block";
 
-      localStorage.setItem("loggedIn","true");
-      localStorage.setItem("UserID", result.UserID);
-      localStorage.setItem("Username", result.Username);
+   if(response.ok){
+       message.style.color = "#155724";
+       message.style.backgroundColor = "#d4edda";
+       message.style.border = "1px solid #c3e6cb";
 
-      window.location.href="index.html";
-
+       
     }else{
-
-       message.style.display = "block";
-       message.textContent = result.error;
-
+       message.style.color = "#b00020";
+       message.style.backgroundColor = "#fdecea";
+       message.style.border = "1px solid #f5c2c7";
     }
 
+    message.textContent = result.message || result.error;
 });

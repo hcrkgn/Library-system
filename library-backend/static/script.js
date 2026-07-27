@@ -1,9 +1,9 @@
 // Redirect user to login page if not logged in
 if(!localStorage.getItem("loggedIn")){
-    window.location.href="login.html";
+    window.location.href="/";;
 }
 
-const API_URL = "http://127.0.0.1:5000/api/books";
+const API_URL = "/api/books";
 const form= document.getElementById("bookForm");
 const booktitle = document.getElementById("bookTitle");
 const author = document.getElementById("author");
@@ -210,6 +210,6 @@ logoutButton.addEventListener("click", function(){
 
     localStorage.removeItem("loggedIn");
 
-    window.location.href = "login.html";
+    window.location.href = "/";
 
 });  
